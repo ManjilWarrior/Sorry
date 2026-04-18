@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Sorry Cat</title>
+    <style>
+        body {
+            background-color: #fce4ec;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: sans-serif;
+        }
+
+        .cat-container {
+            position: relative;
+            width: 150px;
+            height: 130px;
+            animation: sadSlouch 4s ease-in-out infinite;
+        }
+
+        /* --- Speech Bubble --- */
+        .speech-bubble {
+            position: absolute;
+            background: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            top: -70px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            white-space: nowrap;
+        }
+
+        .speech-bubble::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            margin-left: -10px;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-top: 10px solid white;
+        }
+
+        /* --- Cat Face --- */
+        .cat-head {
+            width: 100%;
+            height: 100%;
+            background: #555;
+            border-radius: 50% 50% 40% 40%;
+            position: relative;
+        }
+
+        /* Ears */
+        .cat-head::before, .cat-head::after {
+            content: '';
+            position: absolute;
+            top: -20px;
+            width: 0;
+            height: 0;
+            border-left: 25px solid transparent;
+            border-right: 25px solid transparent;
+            border-bottom: 40px solid #555;
+        }
+        .cat-head::before { left: 10px; transform: rotate(-15deg); }
+        .cat-head::after { right: 10px; transform: rotate(15deg); }
+
+        /* Eyes */
+        .eye {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border-radius: 50%;
+            top: 50px;
+            overflow: hidden;
+        }
+        .eye-l { left: 35px; }
+        .eye-r { right: 35px; }
+
+        .eye::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: #111;
+            border-radius: 50%;
+            bottom: 2px;
+            left: 5px;
+        }
+
+        /* Nose & Mouth */
+        .nose {
+            position: absolute;
+            width: 12px;
+            height: 8px;
+            background: #ff8a80;
+            border-radius: 50%;
+            top: 80px;
+            left: 50%;
+            margin-left: -6px;
+        }
+
+        .mouth {
+            position: absolute;
+            width: 20px;
+            height: 10px;
+            border-top: 2px solid #111;
+            border-radius: 50%;
+            top: 95px;
+            left: 50%;
+            margin-left: -10px;
+        }
+
+        /* Animations */
+        @keyframes sadSlouch {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+
+        .typing {
+            overflow: hidden;
+            border-right: 2px solid orange;
+            white-space: nowrap;
+            width: 0;
+            animation: typing 2s steps(8) forwards infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="cat-container">
+        <div class="speech-bubble">
+            <div class="typing">sorry...</div>
+        </div>
+        <div class="cat-head">
+            <div class="eye eye-l"></div>
+            <div class="eye eye-r"></div>
+            <div class="nose"></div>
+            <div class="mouth"></div>
+        </div>
+    </div>
+
+</body>
+</html>
